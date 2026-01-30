@@ -22,6 +22,22 @@ A React-based task management application developed as a summary project. The ap
 
 4.  Open your browser at the URL shown in the terminal (usually `http://localhost:5173`).
 
+## Running Unit Tests
+
+This project includes unit tests for core components using **Vitest** and **React Testing Library**. To run them:
+
+```bash
+npm test
+```
+
+## Features & Design
+
+*   **Premium Coffee Theme**: Custom "Outfit" font, warm color palette, and smooth animations.
+*   **Data Persistence**: Automatically saves your tasks to LocalStorage.
+*   **Task Management**: Create, read, update, and delete (CRUD) tasks.
+*   **Smart Filtering**: Filter by Active/Completed and see real-time counters.
+*   **Bonus**: Includes a "Clear Completed" button and full unit test coverage.
+
 ## Component Structure & Responsibilities
 
 *   **App**: The main container component that manages the application state (`todos`, `filter`) and handles data persistence.

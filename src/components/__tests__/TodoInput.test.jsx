@@ -6,14 +6,14 @@ describe('TodoInput Component', () => {
   it('renders input and button', () => {
     render(<TodoInput onAdd={() => { }} />)
 
-    expect(screen.getByPlaceholderText('What needs to be done?')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText("What's brewing today?")).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /add/i })).toBeInTheDocument()
   })
 
   it('updates input value on change', () => {
     render(<TodoInput onAdd={() => { }} />)
 
-    const input = screen.getByPlaceholderText('What needs to be done?')
+    const input = screen.getByPlaceholderText("What's brewing today?")
     fireEvent.change(input, { target: { value: 'New Task' } })
 
     expect(input.value).toBe('New Task')
@@ -23,7 +23,7 @@ describe('TodoInput Component', () => {
     const mockOnAdd = vi.fn()
     render(<TodoInput onAdd={mockOnAdd} />)
 
-    const input = screen.getByPlaceholderText('What needs to be done?')
+    const input = screen.getByPlaceholderText("What's brewing today?")
     const button = screen.getByRole('button', { name: /add/i })
 
     fireEvent.change(input, { target: { value: 'Buy Milk' } })
