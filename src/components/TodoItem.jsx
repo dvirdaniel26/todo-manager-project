@@ -37,15 +37,17 @@ function TodoItem({ todo, onToggle, onDelete, onEdit }) {
                 />
             ) : (
                 <span
-                    onDoubleClick={() => setIsEditing(true)}
-                    style={{ textDecoration: todo.completed ? 'line-through' : 'none', flexGrow: 1, marginLeft: '10px', cursor: 'pointer' }}
-                    title="Double click to edit"
+                    style={{ textDecoration: todo.completed ? 'line-through' : 'none', flexGrow: 1, marginLeft: '10px' }}
                 >
                     {todo.text}
                 </span>
             )}
 
-            <button onClick={() => onDelete(todo.id)} className="delete-button" style={{ marginLeft: '10px' }}>
+            <button onClick={() => setIsEditing(true)} className="edit-button">
+                Edit
+            </button>
+
+            <button onClick={() => onDelete(todo.id)} className="delete-button">
                 Delete
             </button>
         </li>

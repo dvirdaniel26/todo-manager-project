@@ -77,14 +77,12 @@ function App() {
         onEdit={editTodo}
       />
 
-      {todos.length > 0 && (
-        <Filters
-          currentFilter={filter}
-          setFilter={setFilter}
-          activeCount={activeCount}
-          onClearCompleted={clearCompleted}
-        />
-      )}
+      <Filters
+        currentFilter={filter}
+        setFilter={setFilter}
+        activeCount={activeCount}
+        onClearCompleted={clearCompleted}
+      />
     </div>
   )
 }
