@@ -1,16 +1,35 @@
-# React + Vite
+# Todo Manager Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based task management application developed as a summary project. The app allows users to add, manage, filter, and persist tasks using LocalStorage.
 
-Currently, two official plugins are available:
+## Instructions for Running the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd todo-manager-project
+    ```
 
-## React Compiler
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-## Expanding the ESLint configuration
+4.  Open your browser at the URL shown in the terminal (usually `http://localhost:5173`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Component Structure & Responsibilities
+
+*   **App**: The main container component that manages the application state (`todos`, `filter`) and handles data persistence.
+*   **TodoInput**: Handles user input for creating new tasks.
+*   **TodoList**: Renders the list of task items based on the current filter.
+*   **TodoItem**: Displays a single task, handles the edit mode, and triggers toggle/delete actions.
+*   **Filters**: Displays filter buttons (All/Active/Completed), the active task counter, and the "Clear Completed" button.
+
+## Known Limitations / Bugs
+
+*   None known at this time.
