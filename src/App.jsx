@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
+import Filters from './components/Filters'
 import './App.css'
 
 function App() {
@@ -48,6 +49,21 @@ function App() {
     ))
   }
 
+  // Clear completed todos
+  const clearCompleted = () => {
+    setTodos(todos.filter(todo => !todo.completed))
+  }
+
+  // Calculate generic derived state
+  const activeCount = todos.filter(todo => !todo.completed).length
+
+  // Filter todos for display
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'active') return !todo.completed
+    if (filter === 'completed') return todo.completed
+    return true
+  })
+
   return (
     <div className="app-container">
       <h1>Todo Manager</h1>
@@ -55,13 +71,20 @@ function App() {
       <TodoInput onAdd={addTodo} />
 
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         onToggle={toggleTodo}
         onDelete={deleteTodo}
         onEdit={editTodo}
       />
 
-      {/* Filters will go here later */}
+      {todos.length > 0 && (
+        <Filters
+          currentFilter={filter}
+          setFilter={setFilter}
+          activeCount={activeCount}
+          onClearCompleted={clearCompleted}
+        />
+      )}
     </div>
   )
 }
