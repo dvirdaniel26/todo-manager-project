@@ -67,7 +67,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Todo Manager</h1>
+      <h1>
+        Todo Manager
+      </h1>
 
       <TodoInput onAdd={addTodo} />
 

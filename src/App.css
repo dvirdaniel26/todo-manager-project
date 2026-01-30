@@ -15,55 +15,72 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding-top: 50px;
+  padding-top: 60px;
+  background-image: url('https://www.transparenttextures.com/patterns/coffee-cup.png');
+  /* Optional: Add a subtle coffee texture */
 }
 
 .app-container {
   background: white;
   width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  min-height: 600px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(62, 39, 35, 0.15);
+  border: 1px solid rgba(141, 110, 99, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  color: var(--coffee-dark);
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
 }
 
 /* Todo Input */
 .todo-input-form {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
 }
 
 .todo-input {
   flex-grow: 1;
-  padding: 10px;
+  padding: 12px 15px;
   font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
+  border: 2px solid #edeff1;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
   outline: none;
+  transition: border-color 0.2s;
+  background-color: #fafafa;
 }
 
 .todo-input:focus {
-  border-color: #007bff;
+  border-color: var(--coffee-light);
+  background-color: white;
 }
 
 .add-button {
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: var(--coffee-medium);
   color: white;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  font-weight: 600;
 }
 
 .add-button:hover {
-  background-color: #0056b3;
+  background-color: var(--coffee-dark);
 }
 
 /* Todo List */
@@ -75,54 +92,103 @@ h1 {
 
 .empty-message {
   text-align: center;
-  color: #777;
+  color: var(--text-muted);
   font-style: italic;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-size: 1.1em;
 }
 
 /* Todo Item */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.2s;
+  padding: 15px 10px;
+  border-bottom: 1px solid #f1eceb;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  animation: slideIn 0.3s ease-out forwards;
 }
 
 .todo-item:hover {
-  background-color: #fafafa;
+  background-color: #f9f7f6;
+  /* Very light coffee tint */
 }
 
 .todo-item.completed span {
-  color: #aaa;
+  color: #bcaaa4;
+  /* Light coffee muted */
   text-decoration: line-through;
+  transition: color 0.3s;
 }
 
 .todo-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--coffee-light);
+  border-radius: 50%;
   margin-right: 15px;
-  width: 18px;
-  height: 18px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.todo-item input[type="checkbox"]:hover {
+  border-color: var(--coffee-medium);
+  background-color: rgba(121, 85, 72, 0.05);
+}
+
+.todo-item input[type="checkbox"]:checked {
+  background-color: var(--coffee-medium);
+  border-color: var(--coffee-medium);
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .edit-input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 8px;
   font-size: 16px;
   margin-left: 10px;
+  border: 1px solid var(--coffee-light);
+  border-radius: 4px;
+  color: var(--text-main);
 }
 
 .edit-button {
   background-color: transparent;
-  color: #ffc107;
-  border: 1px solid #ffc107;
+  color: var(--coffee-medium);
+  border: 1px solid var(--coffee-medium);
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-left: 10px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0;
   transition: all 0.2s;
+  font-weight: 500;
 }
 
 .todo-item:hover .edit-button {
@@ -130,32 +196,33 @@ h1 {
 }
 
 .edit-button:hover {
-  background-color: #ffc107;
-  color: #333;
+  background-color: var(--coffee-medium);
+  color: white;
 }
 
 .delete-button {
   background-color: transparent;
-  color: #dc3545;
-  border: 1px solid #dc3545;
+  color: #e57373;
+  /* Softer red that fits the palette */
+  border: 1px solid #e57373;
   padding: 5px 10px;
-  border-radius: 4px;
-  margin-left: 10px;
+  border-radius: 6px;
+  margin-left: 8px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0;
-  /* Hidden by default */
   transition: all 0.2s;
+  font-weight: 500;
 }
 
 .todo-item:hover .delete-button {
   opacity: 1;
-  /* Show on hover */
 }
 
 .delete-button:hover {
-  background-color: #dc3545;
+  background-color: #ef5350;
   color: white;
+  border-color: #ef5350;
 }
 
 /* Filters */
@@ -163,44 +230,54 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #f1eceb;
   font-size: 14px;
-  color: #777;
+  color: var(--text-muted);
 }
 
 .filters {
   display: flex;
-  gap: 5px;
+  gap: 8px;
+  background: #f5f5f5;
+  padding: 4px;
+  border-radius: 8px;
 }
 
 .filters button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 3px 7px;
-  border-radius: 3px;
-  color: #777;
+  padding: 5px 12px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
 .filters button:hover {
-  color: #333;
+  color: var(--coffee-dark);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .filters button.selected {
-  border: 1px solid #e7d7d7;
-  color: #af2f2f;
+  background-color: white;
+  color: var(--coffee-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
 }
 
 .clear-completed {
   background: none;
   border: none;
   cursor: pointer;
-  color: #777;
-  text-decoration: underline;
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: color 0.2s;
 }
 
 .clear-completed:hover {
-  color: #333;
+  color: var(--coffee-dark);
+  text-decoration: underline;
 }

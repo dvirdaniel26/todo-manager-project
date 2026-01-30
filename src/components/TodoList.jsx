@@ -2,7 +2,12 @@ import TodoItem from './TodoItem'
 
 function TodoList({ todos, onToggle, onDelete, onEdit }) {
     if (todos.length === 0) {
-        return <p className="empty-message">No tasks yet!</p>
+        return (
+            <div className="empty-message">
+                <div style={{ fontSize: '40px', marginBottom: '10px', opacity: 0.5 }}>☕</div>
+                <p>All caught up! Time for a coffee break.</p>
+            </div>
+        )
     }
 
     return (

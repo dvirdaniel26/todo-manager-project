@@ -1,1 +1,44 @@
-/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --coffee-dark: #4e342e;
+    --coffee-medium: #795548;
+    --coffee-light: #a1887f;
+    --coffee-bg: #efebe9;
+    --cream: #fff8e1;
+    /* Using a very light cream/white for cards */
+    --text-main: #3e2723;
+    --text-muted: #8d6e63;
+    --accent: #8d6e63;
+}
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, var(--coffee-bg) 0%, #d7ccc8 100%);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--coffee-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--coffee-medium);
+}

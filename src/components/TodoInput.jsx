@@ -17,7 +17,7 @@ function TodoInput({ onAdd }) {
                 type="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="What needs to be done?"
+                placeholder="What's brewing today?"
                 className="todo-input"
                 autoFocus
             />
