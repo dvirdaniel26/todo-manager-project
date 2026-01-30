@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem'
 
-function TodoList({ todos }) {
+function TodoList({ todos, onToggle, onDelete, onEdit }) {
     if (todos.length === 0) {
         return <p className="empty-message">No tasks yet!</p>
     }
@@ -8,7 +8,13 @@ function TodoList({ todos }) {
     return (
         <ul className="todo-list">
             {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} />
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onToggle={onToggle}
+                    onDelete={onDelete}
+                    onEdit={onEdit}
+                />
             ))}
         </ul>
     )

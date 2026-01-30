@@ -1,7 +1,53 @@
-function TodoItem({ todo }) {
+import { useState } from 'react'
+
+function TodoItem({ todo, onToggle, onDelete, onEdit }) {
+    const [isEditing, setIsEditing] = useState(false)
+    const [editText, setEditText] = useState(todo.text)
+
+    const handleEdit = () => {
+        if (editText.trim()) {
+            onEdit(todo.id, editText)
+            setIsEditing(false)
+        }
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleEdit()
+        }
+    }
+
     return (
-        <li className="todo-item">
-            <span>{todo.text}</span>
+        <li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+            <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => onToggle(todo.id)}
+            />
+
+            {isEditing ? (
+                <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                    onBlur={handleEdit}
+                    onKeyDown={handleKeyDown}
+                    autoFocus
+                    className="edit-input"
+                />
+            ) : (
+                <span
+                    onDoubleClick={() => setIsEditing(true)}
+                    style={{ textDecoration: todo.completed ? 'line-through' : 'none', flexGrow: 1, marginLeft: '10px', cursor: 'pointer' }}
+                    title="Double click to edit"
+                >
+                    {todo.text}
+                </span>
+            )}
+
+            <button onClick={() => onDelete(todo.id)} className="delete-button" style={{ marginLeft: '10px' }}>
+                Delete
+            </button>
         </li>
     )
 }
