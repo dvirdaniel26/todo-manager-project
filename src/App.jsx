@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   // State for todos
-  // Initialize from localStorage if available
+  // Initialize state from localStorage using a function (lazy initialization) to read only on first render
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos')
     return savedTodos ? JSON.parse(savedTodos) : []
@@ -15,7 +15,7 @@ function App() {
   // State for filter: 'all', 'active', 'completed'
   const [filter, setFilter] = useState('all')
 
-  // Effect to save todos to localStorage whenever they change
+  // Persist todos to localStorage whenever the 'todos' state changes
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
@@ -27,17 +27,18 @@ function App() {
       text: text,
       completed: false
     }
+    // State updates are immutable; a new array is created with the new todo.
     setTodos([...todos, newTodo])
   }
 
-  // Toggle todo completion
+  // Toggle completion by creating a new array with the updated item (maintaining immutability)
   const toggleTodo = (id) => {
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ))
   }
 
-  // Delete a todo
+  // Remove item by filtering it out into a new array (maintaining immutability)
   const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id))
   }

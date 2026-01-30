@@ -25,6 +25,7 @@ function TodoItem({ todo, onToggle, onDelete, onEdit }) {
                 onChange={() => onToggle(todo.id)}
             />
 
+            {/* Conditionally render input for editing or span for display based on isEditing state */}
             {isEditing ? (
                 <input
                     type="text"
