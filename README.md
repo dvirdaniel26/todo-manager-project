@@ -6,7 +6,7 @@ A React-based task management application developed as a summary project. The ap
 
 1.  **Clone the repository**:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/dvirdaniel26/todo-manager-project.git
     cd todo-manager-project
     ```
 
